@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Mono-HDR-3D: High Dynamic Range Novel View Synthesis with Single Exposure">
+  <meta name="keywords" content="High Dynamic Range, Novel View Synthesis, Neural Networks, Single Exposure, Computer Vision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mono-HDR-3D: High Dynamic Range Novel View Synthesis with Single Exposure</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/before_after.css">
+  <!-- <link rel="icon" href="./static/images/cameraicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <link rel="stylesheet" href="./static/css/magnify.css">
+  <script src="./static/js/jquery-2.2.4.min.js"></script>
+  <script src="./static/js/jquery.magnify.js"></script>
+
+  <script src="twentytwenty/js/jquery-3.2.1.min.js" defer type="text/javascript"></script>
+  <script src="twentytwenty/js/jquery.event.move.js" defer type="text/javascript"></script>
+  <script src="twentytwenty/js/jquery.twentytwenty.js" defer type="text/javascript"></script>
+  <link rel="stylesheet" href="twentytwenty/css/twentytwenty.css" type="text/css" media="screen" />
+</head>
+
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <!-- <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://oppo-us-research.github.io/OPPO_US_Research_Center_XR_Team">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+    </div> -->
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Mono-HDR-3D: High Dynamic Range Novel View Synthesis with Single Exposure</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Kaixuan Zhang<sup>1</sup>,</span>
+            <span class="author-block">
+              Hu Wang<sup>2</sup>,</span>
+            <span class="author-block">
+              Minxian Li<sup>1</sup>,</span>
+            <span class="author-block">
+              Mingwu Ren<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Mao Ye<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Xiatian Zhu<sup>3</sup>
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Nanjing University of Science and Technology, China,</span>
+            <span class="author-block"><sup>2</sup>University of Electronic Science and Technology of China, China,</span>
+            <span class="author-block"><sup>3</sup>Surrey University, UK</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Accepted by ICML 2025.</span>
+          </div>
+          <br>
+          <!-- <p>&nbsp;</p> -->
+          <script>
+            $(document).ready(function() {
+              // var $zoom = $('.zoom').magnify(
+              // //   {
+              // //   magnifiedWidth: 1000,
+              // //   magnifiedHeight: 753
+              // // }
+              // );
+              // $zoom.destroy();
+            });
+          </script>
+<style>
+.magnify > .magnify-lens {
+  width: 130px;
+  height: 130px;
+}
+</style>
+
+<style>
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+  
+  /* Style the active class, and buttons on mouse-over */
+  .active, .btn:hover {
+    background-color: #666;
+    color: white;
+  }
+
+  /* .twentytwenty-container {
+    min-height: 200px;
+} */
+
+  </style>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2505.01212"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/Surrey-UP-Lab/Mono-HDR-3D"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://drive.google.com/drive/folders/1v0Kq3CJIJSBX0JSqXM1ee_1qBvNChc1g?usp=drive_link"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Videos</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <center>
+            <img src="./static/image/mono_hdr_3d_pipeline.png" width="1000"/>
+          </center>
+          <!-- </center>Sound propagation point patterns between a listener (blue sphere) and emitter (yellow sphere) captured by our AV-GS. Notice the points outside the propagation path (points behind the speaker, points behind rigid walls). Please note we slice the scene into half along the y-axis (omitting the points from the ceiling) in order to facilitate better visibility.<br> -->
+          <b> Overview of our proposed Mono-HDR-3D.</b>  
+          (a) Given single exposure LDR training images with camera poses, we learn an LDR 3D scene
+              model (e.g., NeRF or 3DGS). (b) Importantly, this LDR model is lifted up to an HDR counterpart via a camera imaging aware LDR-toHDR Color Converter (L2H-CC). (c) Further, a closed-loop design is formed by converting HDR images back to LDR counterparts with a
+              latent HDR-to-LDR Color Converter (H2L-CC). This enables optimizing the HDR model even with LDR training images, particularly
+              useful in case of no access to HDR training data. During inference, only the HDR or LDR 3D scene model is needed, taking the novel
+              camera view as the input and outputting the corresponding image rendering.
+          <br> 
+          <br> 
+
+        </div>
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            High Dynamic Range Novel View Synthesis
+            (HDR-NVS) aims to establish a 3D scene HDR
+            model from Low Dynamic Range (LDR) imagery. Typically, multiple-exposure LDR images are employed to capture a wider range of
+            brightness levels in a scene, as a single LDR image cannot represent both the brightest and darkest regions simultaneously. While effective, this
+            multiple-exposure HDR-NVS approach has significant limitations, including susceptibility to motion artifacts (e.g., ghosting and blurring), high
+            capture and storage costs. To overcome these
+            challenges, we introduce, for the first time, the
+            single-exposure HDR-NVS problem, where only
+            single exposure LDR images are available during
+            training. We further introduce a novel approach,
+            Mono-HDR-3D, featuring two dedicated modules
+            formulated by the LDR image formation principles, one for converting LDR colors to HDR
+            counterparts and the other for transforming HDR
+            images to LDR format so that unsupervised learning is enabled in a closed loop. Designed as a
+            meta-algorithm, our approach can be seamlessly
+            integrated with existing NVS models. Extensive
+            experiments show that Mono-HDR-3D significantly outperforms previous methods. Source
+            code is released at https://github.com/
+            prinasi/Mono-HDR-3D.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <!-- Paper video. -->
+    <br>
+    <!--/ Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+<!--         <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p> -->
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <center>
+            <img src="./static/image/mono_hdr_3d_pipeline.png" width="1000"/>
+          </center>      
+          <center>
+          <b> Overview of our proposed Mono-HDR-3D.</b>  </center>
+          <!-- (a) Given single exposure LDR training images with camera poses, we learn an LDR 3D scene
+              model (e.g., NeRF or 3DGS). (b) Importantly, this LDR model is lifted up to an HDR counterpart via a camera imaging aware LDR-toHDR Color Converter (L2H-CC). (c) Further, a closed-loop design is formed by converting HDR images back to LDR counterparts with a
+              latent HDR-to-LDR Color Converter (H2L-CC). This enables optimizing the HDR model even with LDR training images, particularly
+              useful in case of no access to HDR training data. During inference, only the HDR or LDR 3D scene model is needed, taking the novel
+              camera view as the input and outputting the corresponding image rendering. -->
+        <div class="columns is-centered is-vcentered is-variable is-6">
+          <div class="column has-text-centered">
+            <img src="./static/image/l2h_cc.png" style="width:100%; height:auto;">
+            <div><b> Structure of our camera imaging aware LDR-to-HDR Color Converter (L2H-CC). </b></div>
+          </div>
+          <div class="column has-text-centered">
+            <img src="./static/image/h2l_cc.png" style="width:100%; height:auto;">
+            <div><b> Structure of our camera imaging aware HDR-to-LDR Color Converter (H2L-CC). </b></div>
+          </div>
+        </div>
+
+        <!-- Example Result -->
+        </div>
+        <!-- <h2 class="subtitle has-text-centered">Example Result</h2> -->
+        
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <center>
+            <img src="./static/image/results.png"  width="800">
+          </center>
+          <center><b>Quantitative results on the synthetic datasets. All results are averaged over all scenes.</b></center>
+          <br>
+          <!-- <p>&nbsp;</p> -->
+          <center>
+            <img src="./static/image/ldr_results.png"  width="400">
+          </center>        
+          <center>
+            <b>Quantitative results on the real datasets. We report the results averaged across all scenes and exposure times.  </b>
+          </center>
+          <br> 
+        <!-- <center>
+          <img src="static/images/LPM_result.png"  width="1000">
+        </center> -->
+        <!-- Example Result -->
+        </div>
+        <!-- <h2 class="subtitle has-text-centered">Example Result</h2> -->
+        
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Visualizations</h2>
+        <div class="content has-text-justified">
+          <center>
+            <img src="./static/image/visualizations.png"  width="800">
+          </center>
+          <center><b> Comparison of HDR-NVS on both (a/b) synthetic and (c) real datasets.</b></center>
+          <br>
+          <!-- <p>&nbsp;</p> -->
+          <center>
+            <img src="./static/image/nerf_vis.png"  width="800">
+          </center>        
+          <center>
+            <b>HDR reconstruction comparison on synthetic datasets.  </b>
+          </center>
+          <br> 
+        <!-- <center>
+          <img src="static/images/LPM_result.png"  width="1000">
+        </center> -->
+        <!-- Example Result -->
+        </div>
+        <!-- <h2 class="subtitle has-text-centered">Example Result</h2> -->
+        
+      </div>
+    </div>
+
+
+
+    <!-- <br> -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <!-- <h2 class="title is-3">Quantitative Results</h2> -->
+        <div class="content has-text-justified">
+          <style>
+            .grid-container {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr); /* Creates 2 columns with equal width */
+              grid-gap: 10px; /* Adjust the gap between the divs */
+            }
+            .grid-item {
+              width: 100%;
+            }
+          </style>
+
+          <!-- <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <center><h3 class="title is-4">Ablation</h3></center>
+          <p>&nbsp;</p>
+
+          <div class="grid-container">
+            <div class="grid-item">
+              <div class="compare" style="width: 467px; margin-right: 20px;">
+                <img class="slider-image" style="width: 467px" src="./static/image/abla/00027-a.png" />
+                <img class="slider-image" style="width: 467px" src="./static/image/abla/00027-a-wo point addition.png" />
+              </div>
+            </div>
+            <div class="grid-item">
+              <div class="compare" style="width: 467px;">
+                <img class="slider-image" style="width: 467px" src="./static/image/abla/00027-a.png" />
+                <img class="slider-image" style="width: 467px" src="./static/image/abla/00027-a-wo reset.png" />
+              </div>
+            </div>
+            <div class="grid-item">
+              <div>
+                <span style="display: inline; text-align: left; margin-right: 200px;"><b>Ours</b></span>
+                <span style="display: inline; text-align: right;"><b>Ours without point addition</b></span>
+              </div>
+            </div>
+            <div class="grid-item">
+              <div>
+                <span style="display: inline; text-align: left; margin-right: 195px;"><b>Ours</b></span>
+                <span style="display: inline; text-align: right;"><b>Ours without reset</b></span>
+              </div>
+            </div>
+          </div> -->
+          <body><br/></body>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title" style="text-align: center;">BibTeX</h2>
+    <pre><code>@inproceedings{zhang2025high,
+  title={High Dynamic Range Novel View Synthesis with Single Exposure},
+  author={Zhang, Kaixuan and Wang, Hu and Li, Minxian and Ren, Mingwu and Ye, Mao and Zhu, Xiatian},
+  booktitle={Forty-second International Conference on Machine Learning},
+  year={2025}
+  }</code></pre>
+<p>&nbsp;</p>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/Surrey-UPLab/Localized-Gaussian-Point-Management" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This great website template was borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
