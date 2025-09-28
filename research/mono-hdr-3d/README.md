@@ -11,7 +11,7 @@ Designed as a meta-algorithm, our approach can be seamlessly integrated with exi
 ## Overview
 Given single-exposure LDR images (with corresponding camera poses) as input, we first learn an LDR 3D scene model (e.g., NeRF or 3DGS). Then, we elevate this LDR model to an HDR counterpart via our camera-imaging–aware LDR-to-HDR Color Converter (L2H-CC). Additionally, we introduce a latent HDR-to-LDR Color Converter (H2L-CC) as a closed-loop component, enabling the optimization of HDR features even when only LDR training images are available, which ensures the framework to be robust in the absence of ground-truth HDR data.
 <p align="center">
-<img src="assets/pipeline.png"/>
+<img src="pipeline.png"/>
 </p>
 
 ## Quick Start
@@ -57,3 +57,4 @@ Intermediate results and models are saved in ```output/mlp/<scene_name>```
 
 ## Acknowledge
 Our code is based on the famous pytorch reimplementation of [HDR-GS](https://github.com/caiyuanhao1998/HDR-GS) and [HDR-NeRF](https://github.com/xhuangcv/hdr-nerf/). We appreciate all the contributors.
+
